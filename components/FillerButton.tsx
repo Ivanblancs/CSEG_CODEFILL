@@ -1,4 +1,3 @@
-// components/FillerButton.tsx
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
@@ -13,6 +12,8 @@ const FillerButton = <T extends string>({ text, onPress, disabled }: FillerButto
     onPress={() => onPress(text)}
     disabled={disabled}
     style={[styles.button, disabled && styles.disabledButton]}
+    accessible={true}
+    accessibilityLabel={`Option ${text}, ${disabled ? 'already used' : 'available'}`}
   >
     <Text style={styles.buttonText}>{text}</Text>
   </TouchableOpacity>
