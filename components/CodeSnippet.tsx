@@ -5,7 +5,7 @@ interface CodeSnippetProps {
   template: string[];
   filledValues: string[];
   onBlankPress: (index: number) => void;
-  isSolved: boolean; // Added to style solved blanks
+  isSolved: boolean;
 }
 
 const CodeSnippet: React.FC<CodeSnippetProps> = React.memo(
@@ -14,8 +14,6 @@ const CodeSnippet: React.FC<CodeSnippetProps> = React.memo(
 
     const renderLine = (line: string, lineIndex: number) => {
       const parts: JSX.Element[] = [];
-      let currentIndex = 0;
-
       const regex = /(___)/g;
       const matches = line.split(regex);
 
@@ -37,24 +35,28 @@ const CodeSnippet: React.FC<CodeSnippetProps> = React.memo(
               </Text>
             </TouchableOpacity>
           );
-        } else if (part.trim().length > 0) {
+        } else if (part.length > 0) { // Include empty strings (e.g., spaces) without trimming
           parts.push(
             <Text key={`${lineIndex}-${partIndex}`} style={styles.codeText}>
-              {part}{' '}
+              {part}
             </Text>
           );
         }
       });
 
-      return parts;
+      return (
+        <View style={styles.codeLineContainer}>
+          {parts}
+        </View>
+      );
     };
 
     return (
       <View style={styles.container}>
         {template.map((line, lineIndex) => (
-          <Text key={lineIndex} style={styles.codeLine}>
+          <View key={lineIndex} style={styles.lineWrapper}>
             {renderLine(line, lineIndex)}
-          </Text>
+          </View>
         ))}
       </View>
     );
@@ -62,25 +64,41 @@ const CodeSnippet: React.FC<CodeSnippetProps> = React.memo(
 );
 
 const styles = StyleSheet.create({
-  container: { padding: 40, backgroundColor: '#f5f5d5', borderRadius: 8 },
-  codeLine: { fontFamily: 'monospace', fontSize: 16, marginVertical: 4 },
-  codeText: { color: '#333' },
+  container: {
+    padding: 40,
+    backgroundColor: '#f5f5d5',
+    borderRadius: 8,
+  },
+  lineWrapper: {
+    marginVertical: 4, // Spacing between lines
+  },
+  codeLineContainer: {
+    flexDirection: 'row', // Align text and blanks horizontally
+    alignItems: 'center', // Vertically center all elements in the line
+  },
+  codeText: {
+    fontFamily: 'monospace',
+    fontSize: 16,
+    color: '#333',
+  },
   blank: {
-    backgroundColor: '#e0e0b0', // A different shade from #f5f5d5 (slightly darker beige)
-    borderRadius: 8, // Rounded edges
-    paddingHorizontal: 8, // Increased padding for a rectangular look
+    backgroundColor: '#e0e0b0',
+    borderRadius: 8,
+    paddingHorizontal: 8,
     paddingVertical: 2,
     minWidth: 30,
     alignItems: 'center',
-    justifyContent: 'center', // Center the text vertically
+    justifyContent: 'center',
   },
-  blankSolved: { 
-    backgroundColor: '#d0e8d0', // Lighter green shade for solved state
-    borderColor: '#4CAF50', // Green border to match solved state
-    borderWidth: 1, // Add a subtle border for solved
+  blankSolved: {
+    backgroundColor: '#d0e8d0',
+    borderColor: '#4CAF50',
+    borderWidth: 1,
   },
-  blankText: { 
-    color: '#0066cc', // Keep text color consistent
+  blankText: {
+    fontFamily: 'monospace', // Match codeText font
+    fontSize: 16, // Match codeText size
+    color: '#0066cc',
     fontWeight: 'bold',
   },
 });
