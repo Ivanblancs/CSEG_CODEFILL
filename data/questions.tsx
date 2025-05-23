@@ -26,70 +26,8 @@ export const questions = {
       answerSequence: "0,1",
       explanation: "'#' marks a comment, and '=' assigns a value.",
       hint: "The first is a symbol, the second is an operator."
-    },
-    {
-      problemId: "e4",
-      problem: "What function converts a string to an integer?",
-      code: "num = ___('10')\n___(num + 5)",
-      fillers: ["int", "float", "print", "str"],
-      answerSequence: "0,2",
-      explanation: "'int' converts to an integer, and 'print' shows the result.",
-      hint: "The first starts with 'i', the second with 'p'."
-    },
-    {
-      problemId: "e5",
-      problem: "How do you define a list?",
-      code: "my_list = ___1, 2, 3___\n___(my_list)",
-      fillers: ["[", "]", "(", "print"],
-      answerSequence: "0,1,3",
-      explanation: "'[' and ']' enclose a list, and 'print' displays it.",
-      hint: "The first two are brackets, the third starts with 'p'."
-    },
-    {
-      problemId: "e6",
-      problem: "What keyword defines a function?",
-      code: "___ my_func():\n    ___('Hi!')",
-      fillers: ["def", "func", "print", "call"],
-      answerSequence: "0,2",
-      explanation: "'def' defines a function, and 'print' outputs a message.",
-      hint: "The first starts with 'd', the second with 'p'."
-    },
-    {
-      problemId: "e7",
-      problem: "How do you add two numbers and show the result?",
-      code: "x = 3 + 4\n___(___)",
-      fillers: ["print", "x", "sum", "display"],
-      answerSequence: "0,1",
-      explanation: "'print' outputs the result, and 'x' is the variable.",
-      hint: "The first is an output function, the second is the variable."
-    },
-    {
-      problemId: "e8",
-      problem: "What symbol compares equality?",
-      code: "if 5 ___ 5:\n    ___('Equal')",
-      fillers: ["==", "=", "print", "!="],
-      answerSequence: "0,2",
-      explanation: "'==' checks equality, and 'print' shows the message.",
-      hint: "The first has two characters, the second starts with 'p'."
-    },
-    {
-      problemId: "e9",
-      problem: "How do you store a decimal number?",
-      code: "pi = ___3.14___\n___(pi)",
-      fillers: ["(", ")", "float", "print"],
-      answerSequence: "2,3",
-      explanation: "'float' defines a decimal, and 'print' displays it.",
-      hint: "The first starts with 'f', the second with 'p'."
-    },
-    {
-      problemId: "e10",
-      problem: "What keyword repeats an action?",
-      code: "___ x < 3:\n    ___('Looping')",
-      fillers: ["while", "for", "print", "do"],
-      answerSequence: "0,2",
-      explanation: "'while' creates a loop, and 'print' outputs text.",
-      hint: "The first starts with 'w', the second with 'p'."
     }
+   
   ],
   medium: [
     {
@@ -163,36 +101,10 @@ export const questions = {
       answerSequence: "0,2",
       explanation: "'in' checks membership, and 'print' outputs the result.",
       hint: "The first has two letters, the second starts with 'p'."
-    },
-    {
-      problemId: "m9",
-      problem: "How do you combine two strings?",
-      code: "a = 'Hello'\nb = a ___ ' World'\n___(b)",
-      fillers: ["+", "-", "print", "*"],
-      answerSequence: "0,2",
-      explanation: "'+' concatenates strings, and 'print' displays them.",
-      hint: "The first is an operator, the second starts with 'p'."
-    },
-    {
-      problemId: "m10",
-      problem: "What stops a loop early?",
-      code: "for i in range(5):\n    if i == 2:\n        ___    \n    ___(i)",
-      fillers: ["break", "continue", "print", "stop"],
-      answerSequence: "0,2",
-      explanation: "'break' exits a loop, and 'print' shows values.",
-      hint: "The first starts with 'b', the second with 'p'."
     }
+  
   ],
   hard: [
-    {
-      problemId: "h1",
-      problem: "How do you define a class and initialize it?",
-      code: "___ MyClass:\n    def ___self___:\n        self.x = 0",
-      fillers: ["class", "__init__", "(", "def"],
-      answerSequence: "0,1",
-      explanation: "'class' defines a class, '__init__' initializes it.",
-      hint: "The first starts with 'c', the second has double underscores."
-    },
     {
       problemId: "h2",
       problem: "How do you open and close a file?",
@@ -219,60 +131,6 @@ export const questions = {
       answerSequence: "0,2",
       explanation: "'lambda' defines an anonymous function, 'print' outputs the result.",
       hint: "The first starts with 'l', the second with 'p'."
-    },
-    {
-      problemId: "h5",
-      problem: "How do you write a list comprehension?",
-      code: "squares = [x**2 ___ x ___ range(5)]\n___(squares)",
-      fillers: ["for", "in", "print", "if"],
-      answerSequence: "0,1,2",
-      explanation: "'for' and 'in' form the comprehension, 'print' displays it.",
-      hint: "The first has three letters, the second has two, the third starts with 'p'."
-    },
-    {
-      problemId: "h6",
-      problem: "How do you inherit from a class?",
-      code: "class Base:\n    pass\nclass Derived___Base___:\n    ___('Inherited')",
-      fillers: ["(", ")", "print", ":"],
-      answerSequence: "0,1,2",
-      explanation: "'(' and ')' specify inheritance, 'print' confirms it.",
-      hint: "The first two are parentheses, the third starts with 'p'."
-    },
-    {
-      problemId: "h7",
-      problem: "How do you write to a file?",
-      code: "file = open('out.txt', ___)\nfile.___('Text')\nfile.close()",
-      fillers: ["'w'", "write", "print", "'r'"],
-      answerSequence: "0,1",
-      explanation: "'w' sets write mode, 'write' adds text to the file.",
-      hint: "The first is in quotes, the second starts with 'w'."
-    },
-    {
-      problemId: "h8",
-      problem: "How do you raise an exception?",
-      code: "if True:\n    ___ ValueError('Oops')\n___('Raised')",
-      fillers: ["raise", "throw", "print", "except"],
-      answerSequence: "0,2",
-      explanation: "'raise' triggers an exception, 'print' confirms it.",
-      hint: "The first starts with 'r', the second with 'p'."
-    },
-    {
-      problemId: "h9",
-      problem: "How do you import a module and use it?",
-      code: "___ math\nx = math.___(90)\nprint(x)",
-      fillers: ["import", "sin", "from", "cos"],
-      answerSequence: "0,1",
-      explanation: "'import' loads a module, 'sin' is a math function.",
-      hint: "The first starts with 'i', the second with 's'."
-    },
-    {
-      problemId: "h10",
-      problem: "How do you define a generator?",
-      code: "def gen():\n    ___ 1\n    yield 2\nx = gen()\n___(next(x))",
-      fillers: ["yield", "return", "print", "next"],
-      answerSequence: "0,2",
-      explanation: "'yield' makes a generator, 'print' shows the value.",
-      hint: "The first starts with 'y', the second with 'p'."
     }
   ]
 };

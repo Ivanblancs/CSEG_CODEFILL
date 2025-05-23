@@ -1,44 +1,55 @@
-# main.py
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 from src.question_generator import QuestionGenerator
-import json
+from fastapi.middleware.cors import CORSMiddleware
+import logging
 
-def get_difficulty() -> str:
-    valid_difficulties = ["easy", "medium", "hard"]
-    while True:
-        difficulty = input("Enter difficulty level (easy, medium, hard): ").lower().strip()
-        if difficulty in valid_difficulties:
-            return difficulty
-        print("Invalid input. Please choose 'easy', 'medium', or 'hard'.")
+app = FastAPI()
 
-def main():
-    generator = QuestionGenerator()
-    difficulty = get_difficulty()
-    questions = []
-    
-    print(f"\nGenerating 10 {difficulty} questions:")
-    try:
-        for i in range(10):
-            print(f"\nGenerating question {i + 1}...")
-            question = generator.generate_question(difficulty)
-            questions.append({
-                "problemId": question.problemId,
-                "problem": question.problem,
-                "code": question.code,
-                "fillers": question.fillers,
-                "answerSequence": question.answerSequence,
-                "explanation": question.explanation,
-                "hint": question.hint
-            })
-            print(f"Generated: {question.problemId} - {question.problem}")
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-        # Save to JSON file
-        filename = f"{difficulty}_questions.json"
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(questions, f, indent=4)
-        print(f"\nSaved 10 questions to {filename}")
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-    except Exception as e:
-        print(f"Error: {str(e)}")
+class QuestionRequest(BaseModel):
+    difficulty: str
 
-if __name__ == "__main__":
-    main()
+class QuestionResponse(BaseModel):
+    problemId: str
+    problem: str
+    code: str
+    fillers: list[str]
+    answerSequence: str
+    explanation: str
+    hint: str
+
+@app.post("/generate-question", response_model=QuestionResponse)
+async def generate_question(request: QuestionRequest):
+    max_attempts = 3
+    for attempt in range(max_attempts):
+        try:
+            generator = QuestionGenerator()
+            question = generator.generate_question(request.difficulty)
+            logger.info(f"Generated question: {question.__dict__}")  # Log the question
+            return QuestionResponse(
+                problemId=question.problemId,
+                problem=question.problem,
+                code=question.code,
+                fillers=question.fillers,
+                answerSequence=question.answerSequence,
+                explanation=question.explanation,
+                hint=question.hint
+            )
+        except Exception as e:
+            logger.error(f"Attempt {attempt + 1} failed: {str(e)}")
+            if attempt == max_attempts - 1:
+                raise HTTPException(status_code=500, detail=f"Failed to generate valid question after {max_attempts} attempts: {str(e)}")
+            continue

@@ -1,0 +1,145 @@
+{
+    "easy": [
+      {
+        "problemId": "e1",
+        "problem": "How do you define a variable and print its value?",
+        "code": "___ = 5\n___(x)",
+        "fillers": ["x", "print", "show", "y"],
+        "answerSequence": "0,1",
+        "explanation": "'x' is the variable name, and 'print' displays its value.",
+        "hint": "The first is a letter, the second starts with 'p'."
+      },
+      {
+        "problemId": "e2",
+        "problem": "What keyword starts a loop and prints numbers?",
+        "code": "___ i in range(3):\n    ___(i)",
+        "fillers": ["for", "while", "print", "display"],
+        "answerSequence": "0,2",
+        "explanation": "'for' starts a loop, and 'print' outputs each number.",
+        "hint": "The first has three letters, the second starts with 'p'."
+      },
+      {
+        "problemId": "e3",
+        "problem": "How do you comment code and assign a string?",
+        "code": "___ This is a note\nname ___ 'Alice'",
+        "fillers": ["#", "=", "//", ":"],
+        "answerSequence": "0,1",
+        "explanation": "'#' marks a comment, and '=' assigns a value.",
+        "hint": "The first is a symbol, the second is an operator."
+      }
+    
+    
+    ],
+    "medium": [
+      {
+        "problemId": "m1",
+        "problem": "How do you get user input and display it?",
+        "code": "name = ___('Your name: ')\n___(name)",
+        "fillers": ["input", "print", "read", "show"],
+        "answerSequence": "0,1",
+        "explanation": "'input' gets user input, and 'print' displays it.",
+        "hint": "The first starts with 'i', the second with 'p'."
+      },
+      {
+        "problemId": "m2",
+        "problem": "How do you define a dictionary?",
+        "code": "my_dict = ___'key': ___'value'___",
+        "fillers": ["{", "}", ":", "'"],
+        "answerSequence": "0,2,1",
+        "explanation": "'{' and '}' enclose a dictionary, ':' separates key-value pairs.",
+        "hint": "The first and third are braces, the second is a colon."
+      },
+      {
+        "problemId": "m3",
+        "problem": "What creates a sequence and loops over it?",
+        "code": "for x in ___(4):\n    ___(x)",
+        "fillers": ["range", "list", "print", "loop"],
+        "answerSequence": "0,2",
+        "explanation": "'range' generates numbers, and 'print' outputs them.",
+        "hint": "The first starts with 'r', the second with 'p'."
+      }
+    ],
+    "hard": [
+      {
+        "problemId": "h2",
+        "problem": "How do you open and close a file?",
+        "code": "file = ___('data.txt', 'r')\nfile.___()\n___('Done')",
+        "fillers": ["open", "close", "print", "read"],
+        "answerSequence": "0,1,2",
+        "explanation": "'open' opens a file, 'close' closes it, 'print' confirms.",
+        "hint": "The first starts with 'o', the second with 'c', the third with 'p'."
+      },
+      {
+        "problemId": "h3",
+        "problem": "How do you handle an error?",
+        "code": "___:\n    1 / 0\n___ ZeroDivisionError:\n    ___('Error')",
+        "fillers": ["try", "except", "print", "catch"],
+        "answerSequence": "0,1,2",
+        "explanation": "'try' starts error handling, 'except' catches it, 'print' shows a message.",
+        "hint": "The first starts with 't', the second with 'e', the third with 'p'."
+      },
+      {
+        "problemId": "h4",
+        "problem": "How do you create a lambda function?",
+        "code": "f = ___ x: x * 2\n___(f(3))",
+        "fillers": ["lambda", "def", "print", "func"],
+        "answerSequence": "0,2",
+        "explanation": "'lambda' defines an anonymous function, 'print' outputs the result.",
+        "hint": "The first starts with 'l', the second with 'p'."
+      },
+      {
+        "problemId": "h5",
+        "problem": "How do you write a list comprehension?",
+        "code": "squares = [x**2 ___ x ___ range(5)]\n___(squares)",
+        "fillers": ["for", "in", "print", "if"],
+        "answerSequence": "0,1,2",
+        "explanation": "'for' and 'in' form the comprehension, 'print' displays it.",
+        "hint": "The first has three letters, the second has two, the third starts with 'p'."
+      },
+      {
+        "problemId": "h6",
+        "problem": "How do you inherit from a class?",
+        "code": "class Base:\n    pass\nclass Derived___Base___:\n    ___('Inherited')",
+        "fillers": ["(", ")", "print", ":"],
+        "answerSequence": "0,1,2",
+        "explanation": "'(' and ')' specify inheritance, 'print' confirms it.",
+        "hint": "The first two are parentheses, the third starts with 'p'."
+      },
+      {
+        "problemId": "h7",
+        "problem": "How do you write to a file?",
+        "code": "file = open('out.txt', ___)\nfile.___('Text')\nfile.close()",
+        "fillers": ["'w'", "write", "print", "'r'"],
+        "answerSequence": "0,1",
+        "explanation": "'w' sets write mode, 'write' adds text to the file.",
+        "hint": "The first is in quotes, the second starts with 'w'."
+      },
+      {
+        "problemId": "h8",
+        "problem": "How do you raise an exception?",
+        "code": "if True:\n    ___ ValueError('Oops')\n___('Raised')",
+        "fillers": ["raise", "throw", "print", "except"],
+        "answerSequence": "0,2",
+        "explanation": "'raise' triggers an exception, 'print' confirms it.",
+        "hint": "The first starts with 'r', the second with 'p'."
+      },
+      {
+        "problemId": "h9",
+        "problem": "How do you import a module and use it?",
+        "code": "___ math\nx = math.___(90)\nprint(x)",
+        "fillers": ["import", "sin", "from", "cos"],
+        "answerSequence": "0,1",
+        "explanation": "'import' loads a module, 'sin' is a math function.",
+        "hint": "The first starts with 'i', the second with 's'."
+      },
+      {
+        "problemId": "h10",
+        "problem": "How do you define a generator?",
+        "code": "def gen():\n    ___ 1\n    yield 2\nx = gen()\n___(next(x))",
+        "fillers": ["yield", "return", "print", "next"],
+        "answerSequence": "0,2",
+        "explanation": "'yield' makes a generator, 'print' shows the value.",
+        "hint": "The first starts with 'y', the second with 'p'."
+      }
+    ]
+  }

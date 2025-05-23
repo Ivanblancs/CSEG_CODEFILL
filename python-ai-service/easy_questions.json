@@ -1,0 +1,20 @@
+[
+    {
+        "problemId": "e2",
+        "problem": "Add two numbers together and print the sum.",
+        "code": "a = 10\nb = 5\nsum = a ___ b\n___(sum)",
+        "fillers": [
+            "+",
+            "-",
+            "*",
+            "/",
+            "print",
+            "display",
+            "show",
+            "output"
+        ],
+        "answerSequence": "0,4",
+        "explanation": "'a + b' adds the two variables, and 'print' displays the result.",
+        "hint": "The first blank is a mathematical operator, the second is a function that shows output."
+    }
+]
